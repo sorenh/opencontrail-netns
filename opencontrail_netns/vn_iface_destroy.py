@@ -23,10 +23,12 @@ def vn_iface_destroy():
     parser.add_argument("ifname", help="Interface name")
     arguments = parser.parse_args(sys.argv[1:])
 
+    ifname = arguments.ifname
+
     manager = HostManager()
     provisioner = Provisioner(api_server=arguments.api_server,
                               api_port=arguments.api_port)
-    instance_name = '%s-%s' % (socket.gethostname(), arguments.ifname)
+    instance_name = '%s-%s' % (socket.gethostname(), ifname)
     vm = provisioner.virtual_machine_lookup(instance_name)
 
     vmi_list = vm.get_virtual_machine_interfaces()

@@ -39,10 +39,12 @@ def iface_create():
 
     arguments = parser.parse_args(sys.argv[1:])
 
+    ifname = arguments.ifname
+
     manager = HostManager()
     provisioner = Provisioner(api_server=arguments.api_server,
                               api_port=arguments.api_port)
-    instance_name = '%s-%s' % (socket.gethostname(), arguments.ifname)
+    instance_name = '%s-%s' % (socket.gethostname(), ifname)
     vm = provisioner.virtual_machine_locate(instance_name)
 
     network = build_network_name(arguments.project, arguments.network)
