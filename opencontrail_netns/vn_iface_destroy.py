@@ -47,5 +47,5 @@ def vn_iface_destroy():
 
 
 if __name__ == '__main__':
-    vn_iface_create()
+    vn_iface_destroy()
 
