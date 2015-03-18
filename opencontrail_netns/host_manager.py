@@ -54,4 +54,7 @@ class HostManager(object):
         shell_command('ip link set %s up' % (ifname))
 
     def clear_interfaces(self, ifname):
-        shell_command('ip link delete %s' % ifname)
+        try:
+            shell_command('ip link delete %s' % ifname)
+        except subprocess.CalledProcessError:
+            pass
